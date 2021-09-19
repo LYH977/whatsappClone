@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.pm.SigningInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -32,6 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+            getSupportActionBar().hide();
 
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -44,7 +47,6 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("We are creating ur account");
 
         binding.btnSignUp.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View v) {
                 if(isFieldEmpty(binding.txtEmail) || isFieldEmpty(binding.txtPassword) ||isFieldEmpty(binding.txtUsername)){
@@ -76,5 +78,16 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        binding.txtAlreadyHaveAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
+                startActivity(intent);
+            }
+        });
+        if(mAuth.getCurrentUser()!=null){
+            Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
