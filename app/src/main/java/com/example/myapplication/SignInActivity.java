@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance("https://whatsappclone-310b0-default-rtdb.asia-southeast1.firebasedatabase.app");
+        database = FirebaseDatabase.getInstance(Secret.getFbInstance());
 
         progressDialog = new ProgressDialog(SignInActivity.this);
         progressDialog.setTitle("Login");
@@ -57,7 +57,7 @@ public class SignInActivity extends AppCompatActivity {
 
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(Secret.getClientKey())
                 .requestEmail()
                 .build();
 

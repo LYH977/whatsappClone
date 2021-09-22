@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         mAuth = FirebaseAuth.getInstance();
-        database = FirebaseDatabase.getInstance("https://whatsappclone-310b0-default-rtdb.asia-southeast1.firebasedatabase.app");
+        database = FirebaseDatabase.getInstance(Secret.getFbInstance());
 
         progressDialog = new ProgressDialog(SignUpActivity.this);
         progressDialog.setTitle("Creating Account");
