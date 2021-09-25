@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.settings:
-                Toast.makeText(this, "settings",Toast.LENGTH_SHORT).show();
-                break;
+                Intent intent2 = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent2);                break;
             case R.id.groupChat:
                 Intent intent1 = new Intent(MainActivity.this, GroupChatActivity.class);
                 startActivity(intent1);
